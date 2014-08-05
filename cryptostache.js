@@ -1,8 +1,7 @@
 ;(function(){
 	
-	function cryptostache(len){
+	function cryptostache(){
 		this.value = "";
-		this.len = len || 16
 	}
 	
 	cryptostache.prototype.encrypt = function(str, salt){
@@ -22,7 +21,7 @@
 				else str += ((salt[i] || 0) + "");
 			}
 			
-			seglen = str.length/this.len;
+			seglen = str.length/16;
 			front = !front;
 		}
 		
@@ -48,9 +47,9 @@
 			front = !front;
 		}
 		
-		if(this.value.length > this.len*2) this.value = this.value.substring(0, this.len*2);
+		if(this.value.length > 32) this.value = this.value.substring(0, 32);
 		else{
-			while(this.value.length < this.len*2){
+			while(this.value.length < 32){
 				this.value += "0";
 			}
 		}
@@ -58,20 +57,40 @@
 		return this;
 	};
 	
-	cryptostache.prototype.barcode = function(){
-		if(this.value != ""){
+	cryptostache.prototype.barcode = function(str, salt){
+		if(this.value === "") this.encrypt(str, salt);
 			
+		var img = makeCanvas(160, 32);
+		img.fillStyle = "black";
+		for(var i = 0; i<this.value.length; i++){
+			//TODO
+			img.fillRect(i*5, 0, Math.ceil(parseInt(this.value[i])*0.25), 32);
 		}
-		return this;
+		
+		var result = img.canvas.toDataURL("image/png");
+		img = null;
+
+		return result;
 	};
 	
-	cryptostache.prototype.colours = function(){
-		if(this.value != ""){
+	cryptostache.prototype.colours = function(str, salt){
+		if(this.value === "") this.encrypt(str, salt);
 			
-		}
+		//TODO
 		return this;
 	};
+
+	function makeCanvas(width, height){
+		var cnv = document.createElement("canvas");
+		cnv.width = width;
+		cnv.height = height;
+		return cnv.getContext("2d");
+	} 
 	
-	if(window.define && window.define.amd) define("cryptostache", [], cryptostache);
+	if(window.define && window.define.amd){
+		define("cryptostache", [], function(){
+			return cryptostache;
+		});
+	}
 	else window.cryptostache = cryptostache;
 })();
