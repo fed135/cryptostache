@@ -1,0 +1,27 @@
+{
+  "name": "cryptostache",
+  "version": "1.0.0",
+  "description": "A simple encryptor with a fancy mustache-shaped barcode output",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fed135/cryptostache.git"
+  },
+  "keywords": [
+    "barcode",
+    "mustache",
+    "encryption"
+  ],
+  "author": "frederic charette",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/fed135/cryptostache/issues"
+  },
+  "homepage": "https://github.com/fed135/cryptostache#readme",
+  "dependencies": {
+    "canvas": "^1.2.3"
+  }
+}
