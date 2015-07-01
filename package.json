@@ -1,6 +1,6 @@
 {
   "name": "cryptostache",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple encryptor with a fancy mustache-shaped barcode output",
   "main": "index.js",
   "scripts": {
