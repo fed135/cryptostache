@@ -1,30 +1,30 @@
 var Canvas = require('canvas');
 
-var binaries = [
-	/* 0 */ [0,0,0,0],
-	/* 1 */ [1,0,0,0],
-	/* 2 */ [0,1,0,0],
-	/* 3 */ [1,1,0,0],
-	/* 4 */ [0,0,1,0],
-	/* 5 */ [1,0,1,0],
-	/* 6 */ [0,1,1,0],
-	/* 7 */ [1,1,1,0],
-	/* 8 */ [0,0,0,1],
-	/* 9 */ [1,0,0,1],
-	/* 10 */ [0,1,0,1],
-	/* 11 */ [1,1,0,1],
-	/* 12 */ [0,0,1,1],
-	/* 13 */ [1,0,1,1],
-	/* 14 */ [0,1,1,1],
-	/* 15 */ [1,1,1,1]
-];
+var binaries = {
+	'0': [0,0,0,0],
+	'1': [1,0,0,0],
+	'2': [0,1,0,0],
+	'3': [1,1,0,0],
+	'4': [0,0,1,0],
+	'5': [1,0,1,0],
+	'6': [0,1,1,0],
+	'7': [1,1,1,0],
+	'8': [0,0,0,1],
+	'9': [1,0,0,1],
+	'a': [0,1,0,1],
+	'b': [1,1,0,1],
+	'c': [0,0,1,1],
+	'd': [1,0,1,1],
+	'e': [0,1,1,1],
+	'f': [1,1,1,1]
+};
 
 //5 pixels per line
 
-function print(code, color){
+function print(color){
 	var index = 0;
 	var serie;
-	var buffer = new Canvas((code.length * 5) + 8, 50);
+	var buffer = new Canvas((this.value.length * 5) + 8, 50);
 	var ctx = buffer.getContext('2d');
 
 	ctx.fillStyle = color || 'black';
@@ -42,9 +42,8 @@ function print(code, color){
 	//Print the code
 
 	index = 4;
-	code.forEach(function(e) {
-		//console.log(e + '->' + parseInt(e));
-		serie = binaries[parseInt(e)];
+	this.value.split('').forEach(function(e) {
+		serie = binaries[e];
 
 		serie.forEach(function(a) {
 			if (a === 1) {
