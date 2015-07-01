@@ -14,8 +14,8 @@ var template = require('./src/template');
 
 /* Methods ********************************************************************/
 
-function Cryptostache() {
-	this.value = null;
+function Cryptostache(code, secretKey) {
+	this.value = this.encrypt(code, secretKey);
 
 	this.template = template;
 }

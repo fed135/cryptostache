@@ -4,7 +4,7 @@
   "description": "A simple encryptor with a fancy mustache-shaped barcode output",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests/index.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,11 @@
   },
   "homepage": "https://github.com/fed135/cryptostache#readme",
   "dependencies": {
-    "canvas": "^1.2.3"
+    "canvas": "1.2.3"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "debug": "^2.2.0",
+    "mocha": "^2.2.5"
   }
 }

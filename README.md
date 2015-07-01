@@ -18,8 +18,7 @@ A short 2-sided encryption script that can turn your strings/ product keys into 
 
     var cryptostache = require('cryptostache');
 
-    var product_code = new cryptostache();
-    encoder.encrypt('some_product_code', 'secret_key');
+    var product_code = new cryptostache('some_product_code', 'secret_key');
 
     console.log(product_code.value);
     //The encoded product code (Hex string)
@@ -32,7 +31,7 @@ A short 2-sided encryption script that can turn your strings/ product keys into 
 
 1. You can specify the mask to use to create other shapes of barcode !
 
-    product_code.template = (your base64 mask data)
+    product_code.template = (your base64 mask data);
 
 2. You can specify the color for the bars. (background is transparent)
 
@@ -43,11 +42,14 @@ A short 2-sided encryption script that can turn your strings/ product keys into 
 
 1. Finish masking
 
-1. Add tests
+1. Add better tests
 
 2. Document ideal template sizes
 
 3. Docs
+
+4. Optimize drawing (should be under 16ms)
+
 
 ## Why?
 
