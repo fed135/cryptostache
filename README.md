@@ -1,7 +1,7 @@
 # cryptostache
 
 
-A short 2-sided encryption script that can turn your strings/ product keys into mustache-shaped bar codes! 
+A script that can turn your hashes into mustache-shaped bar codes! 
 
 
 ## Installation
